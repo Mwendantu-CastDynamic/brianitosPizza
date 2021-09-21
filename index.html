@@ -64,7 +64,55 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
             </div>
         </nav>
 
-        
+        <!--Pizza Order Process OffCanvas -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="pizzaCustomazation" aria-labelledby="pizzaNameDiv">
+          <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="pizzaNameDiv">Offcanvas bottom</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body small">
+
+              <div class="pizzaImage">
+                  <img src="" alt="" width="100%">
+              </div>
+
+              <div class="form-group mb-3">
+                  <label for="size">Size</label>
+                  <select name="size" id="size" class="form-control" id="">
+                      <option value="">Select Size</option>
+                  </select>
+              </div>
+
+              <div class="form-group mb-3">
+                  <label for="crust">Crust</label>
+                  <select name="crust" id="crust" class="form-control" id="">
+                      <option value="">Select Crust</option>
+                  </select>
+              </div>
+
+              <div class="form-group mb-3">
+                  <div id="toppings">
+
+                  </div>
+                  <!-- <label for="toppings">Toppings</label>
+                  <select name="toppings" id="toppings" class="form-control" id="">
+                      <option value="">Select Toppings</option>
+                  </select> -->
+              </div>
+
+              <div class="form-group d-flex justify-content-between">
+                  <h4 id="pizzaPrice"></h4>
+                  <div>
+                      <button disabled class="btn btn-warning" id="addToCartBtn" data-bs-toggle="offcanvas"
+                          data-bs-target="#pizzaCustomazation" aria-controls="offcanvasBottom">Add to cart</button>
+                  </div>
+              </div>
+
+
+          </div>
+      </div>
+      <!-- end of the offcanvas -->
         
     </section>
 
