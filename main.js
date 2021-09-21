@@ -213,8 +213,20 @@ $(document).ready(function(){
           $('#pizzaPrice').html('');
       });
   });
-  /* end of Populating pizza list */
+  /* Populating pizza list complete */
 
+
+// Next we formulate a function to populate our Pizza Application with the size options available
+    populateDropdowns($('select#size'), pizzaSizes);
+    $('select#size').on('change', function(){
+      const size =$(this).val();
+      if(selectedPizza){
+         selectedPizza.price = selectedPizza.prices[size];
+      }
+    updateUI()
+});
+
+ /* Populating Pizza size options complete */
 
 
 
