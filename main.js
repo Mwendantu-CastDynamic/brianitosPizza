@@ -181,6 +181,11 @@ function populateDropdowns(sizeElement, items, valueFiled, textField, extraField
 
 $(document).ready(function(){
 
+ // Initialize a Cart Item
+
+ cartItemHtml = $('#shoppingCart .cartItem').prop('outerHTML');
+    $('#shoppingCart .cartItem').remove();
+
 /* Begin by formulating a function to Populate our Pizza List Array
   using the bootstrap jQuery Card component and a looping function 
   to loop through all the the Brianitos Pizza items on offer by embedding the
@@ -206,6 +211,7 @@ $(document).ready(function(){
         data-bs-toggle="offcanvas"
         data-bs-target="#pizzaCustomize"
         aria-controls="offcanvasBottom">Order</a>
+
       </div>
     </div>
       </div>`;
@@ -315,6 +321,24 @@ $(document).ready(function(){
  /* populate delivery zones complete */
 
 
+// Complete Pizza Order functionality by formulating jQuery functions 
+// to handle the multiple purchase Cart interface logic
 
+  const addToCartBtn = $('#addToCartBtn');
+    addToCartBtn.click(function(){        
+        cart.addToCart(selectedPizza);
+        alert(selectedPizza.name +' has been added to cart');
+        updateUI();
+    });
+
+    $('#shoppingCartBtn').on('click', function(){
+        $('#shoppingCart').toggle();
+    });
+
+    $('.checkoutBtn').click(function(){
+        alert('We have received your order');
+        cart = new Cart();
+        updateUI();
+    });
 
 });
