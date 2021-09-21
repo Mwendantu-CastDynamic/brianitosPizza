@@ -131,7 +131,7 @@ new PizzaVariety("TripleCheese","3cheesesGouda3.png","Triple Cheese Gouda"),
 
 new PizzaVariety("PepperoniSausage", "peperroniSausage4.jpg","Pepperoni N Sausage"),
 
-new PizzaVariety("Hawaaian","hawaaianPizza5.jpg","Aloha Flavour"),
+new PizzaVariety("Hawaiian","hawaiian5.jpg","Aloha Flavour"),
 
 new PizzaVariety("Chicken","chickenalfredo6.jpg","ChickenAlfredo")
 
@@ -175,13 +175,13 @@ $(document).ready(function(){
   const pizzaListDiv = $('#pizzalisting');
   let pizzaItems = '';
 
-  for (let i = 0; i < pizzaListing.length; i++) {
-      let pizzaItem = pizzaListing[i];
+  for (let i = 0; i < pizzaList.length; i++) {
+      let pizzaItem = pizzaList[i];
 
       pizzaItems += `<div class="col-md-2 p-1">
       <div class="card" style="width: 18rem;">
       <div class="pizzaImage">
-      <img src="./assets/images/${pizzaItem.image}" class="card-img-top" alt="...">
+      <img src="./images/pizzaImages/${pizzaItem.image}" class="card-img-top" alt="...">
       </div>
       <div class="card-body">
         <h5 class="card-title">`+ pizzaItem.name + `</h5>
@@ -190,7 +190,7 @@ $(document).ready(function(){
         <a href="#" data-index="`+ i + `" 
         class="btn btn-primary orderBtn"
         data-bs-toggle="offcanvas"
-        data-bs-target="#pizzaCustomazation"
+        data-bs-target="#pizzaCustomize"
         aria-controls="offcanvasBottom">Order</a>
 
 
@@ -200,7 +200,20 @@ $(document).ready(function(){
       pizzaItem = undefined;
   }
 
-
+  pizzaListDiv.html(pizzaItems);
+  pizzaListDiv.find('a.orderBtn').each(function () {
+      $(this).on('click', function () {
+          let pizzaIndex = $(this).data('index');
+          selectedPizza = pizzaList[pizzaIndex];
+          $('#pizzaCustomize img').attr('src', './images/pizzaImages/' + selectedPizza.image);
+          
+          $('select#size').val('');
+          $('select#toppings').val('');
+          $('select#crust').val('');
+          $('#pizzaPrice').html('');
+      });
+  });
+  /* end of Populating pizza list */
 
 
 

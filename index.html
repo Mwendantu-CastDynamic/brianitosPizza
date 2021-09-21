@@ -43,7 +43,7 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
          <div id="introSecRow" class="row">
            <div class="col-md4-12" style ="width:100%; font-size:28px; height:420px; overflow:auto; 
                        color:white; background-image:url(./images/pizzaTable.jpg);background-size:cover;
-                       background-position:center;font-family:Arial Helvetica, sans-serif; padding-top:10pt; font-weight: 500; text-align:center;">
+                       background-position:center;font-family:Arial Helvetica, sans-serif; padding-top:10pt; font-weight: 550; text-align:center;">
              <p>Enjoying Your Favourite Pizza to Your Taste is Now as Easy as 1 - 2 - 3...  Presto!</p>
           </div>
         </div>
@@ -52,7 +52,7 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
    
     
     <section>
-
+      <div class="container" style="width:100%; height:100vh;" >
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Place Your Brianito Pizza Order Here</a>
@@ -64,12 +64,14 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
             </div>
         </nav>
 
-        <div id="pizzalisting" class="row">
-          list of pizza
+        <div class="container">
+        <div id="pizzalisting" class="row" >
+         <!--list of pizza--> 
         </div>
+      </div>
 
         <!--Pizza Order Process OffCanvas -->
-        <div class="offcanvas offcanvas-top" tabindex="-1" id="pizzaCustomize" aria-labelledby="pizzaNameDiv">
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="pizzaCustomize" aria-labelledby="pizzaNameDiv">
           <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="pizzaNameDiv">Offcanvas top</h5>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
@@ -109,7 +111,7 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
                   <h4 id="pizzaPrice"></h4>
                   <div>
                       <button disabled class="btn btn-warning" id="addToCartBtn" data-bs-toggle="offcanvas"
-                          data-bs-target="#pizzaCustomazation" aria-controls="offcanvasBottom">Add to cart</button>
+                          data-bs-target="#pizzaCustomize" aria-controls="offcanvasBottom">Add to cart</button>
                   </div>
               </div>
 
@@ -117,15 +119,15 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
           </div>
       </div>
       <!-- end of the offcanvas -->
-        
+    </div>  
     </section>
 
-    <!-- <section>
-      <div  id="concludePage">
+    <section>
+      <div id="concludePage" class="container">
 
       </div>
     </section>
-    -->
+  
    <script src="./main.js"></script>
   </body>
 </html>
