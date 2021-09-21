@@ -69,13 +69,13 @@ PizzaVariety.prototype.topping=[];
 // whose properties we shall use to complete each Customers customized Pizza
 // and determine the additional cost of customization
 
-function Crusts(name, price){
+function Crust(name, price){
 
       this.name = name;
       this.price = price;
 }
 
-function Toppings(name, price){
+function Topping(name, price){
 
       this.name= name;
       this.price=price;
@@ -117,3 +117,90 @@ function Zone(zoneName, price){
 let cart = new Cart();
 let selectedPizza;
 let cartItemHtml;
+
+// We then initialize a newly declared Pizza list array 
+// which we shall use to hold our newly instantiated Pizza varieties
+
+const pizzaList = [
+
+new PizzaVariety("Anchovy","anchovia1.jpg","Anchovy Deli Special"),
+
+new PizzaVariety("Mushroom","musroompizza2.jpg","The Mushroom Medley"),
+
+new PizzaVariety("TripleCheese","3cheesesGouda3.png","Triple Cheese Gouda"),
+
+new PizzaVariety("PepperoniSausage", "peperroniSausage4.jpg","Pepperoni N Sausage"),
+
+new PizzaVariety("Hawaaian","hawaaianPizza5.jpg","Aloha Flavour"),
+
+new PizzaVariety("Chicken","chickenalfredo6.jpg","ChickenAlfredo")
+
+];
+
+// We also create an array to hold all instances of the Crust Object
+// defined to be applied in our Pizza Application.
+
+const CrustsList = [
+
+new Crust("Crispy", 100),
+new Crust("Stuffed", 200),
+new Crust("GlutenFree", 150)
+
+];
+
+const toppingsList= [
+
+new Topping("Cheese", 100),
+new Topping("Pepperoni", 150),
+new Topping("Chicken",200 )
+
+];
+
+const zones = [
+
+new Zone("ZoneA", 100),
+new Zone("ZoneB", 200),
+new Zone("ZoneC",300)
+
+
+];
+
+$(document).ready(function(){
+
+/* Begin by formulating a function to Populate our Pizza List Array
+  using the bootstrap jQuery Card component and a looping function 
+  to loop through all the the Brianitos Pizza items on offer by embedding the
+  cards html Div and referencing it using the DOM  */
+
+  const pizzaListDiv = $('#pizzalisting');
+  let pizzaItems = '';
+
+  for (let i = 0; i < pizzaListing.length; i++) {
+      let pizzaItem = pizzaListing[i];
+
+      pizzaItems += `<div class="col-md-4 p-3">
+      <div class="card" style="width: 18rem;">
+      <div class="pizzaImage">
+      <img src="./assets/images/${pizzaItem.image}" class="card-img-top" alt="...">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">`+ pizzaItem.name + `</h5>
+        <p class="card-text">`+ pizzaItem.description + `</p>
+
+      
+
+      </div>
+    </div>
+      </div>`;
+      pizzaItem = undefined;
+  }
+
+
+
+
+
+
+
+
+
+});
