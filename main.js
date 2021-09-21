@@ -213,7 +213,7 @@ $(document).ready(function(){
           $('#pizzaPrice').html('');
       });
   });
-  /* Populating pizza list complete */
+  /* populating pizza list complete */
 
 
   
@@ -230,11 +230,11 @@ $(document).ready(function(){
     updateUI()
 });
 
- /* Populating Pizza size options complete */
+ /* populating Pizza size options complete */
 
 /* Populate Toppings */
-// Then we formulate a function to provide us with option selector enabling us to select one
-// of the multiple Pizza Application's Toppings options available to a customer.
+// Then we formulate a function to provide us with option selector enabling us to select one or
+//  multiple Toppings options to be provided to our Pizza Order Application user.
     for(let i=0; i<toppingsList.length; i++){
       let topping = toppingsList[i];
       $('#toppings').append(`<div class="form-check">
@@ -246,7 +246,7 @@ $(document).ready(function(){
       
   }
 
-  $('#toppings .form-check-input').on('change', function(){
+  $('#toppings.form-check-input').on('change', function(){
       const isCheck = this.checked;
       
       const selectedToppingValue = $(this).val();
@@ -264,12 +264,9 @@ $(document).ready(function(){
       }
       updateUI()
   });
-  /* end of Populate sizes */
+       /* populate Toppings Complete */
 
-
-
-
-//Then we formulate a function to provide us with a drop down enabling us populate
+ //Then we formulate a function to provide us with a drop down enabling us populate
 // our Pizza Application with the crust options available
 
  populateDropdowns($('select#crust'), crustList, 'name', 'name', 'price');
@@ -283,7 +280,20 @@ $(document).ready(function(){
      updateUI();
  });
 
- /* Populating Pizza crust options complete */
+ /* populating Pizza crust options complete */
+
+ /* Formulate a function to provide us with option selector enabling the Customer 
+   to select one of the multiple delivery zone options available for the Pizza to be 
+   delivered */
+
+ populateDropdowns($('select#deliveryZones'), zones, 'zoneName', 'zoneName', 'price');
+ $('select#deliveryZones').on("change", function(){
+     cart.delivery = zones.find(z=>z.zoneName == $(this).val());
+     // console.log(cart.delivery);
+     updateUI();
+ });
+ /* End of populate delivery zones */
+
 
 
 

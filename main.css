@@ -7,6 +7,16 @@ section{
 
   height:100vh;
 }
+.pizzaImg{
+  height: 1px;
+}
+
+
+.pizzaImage{
+  height: 200px; 
+  overflow: hidden;
+}
+
 
 div #mainSection{
 
