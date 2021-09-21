@@ -129,7 +129,7 @@ new PizzaVariety("Mushroom","musroompizza2.jpg","The Mushroom Medley"),
 
 new PizzaVariety("TripleCheese","3cheesesGouda3.png","Triple Cheese Gouda"),
 
-new PizzaVariety("PepperoniSausage", "peperroniSausage4.jpg","Pepperoni N Sausage"),
+new PizzaVariety("PepperoniSausage", "peperroniSausage4.jpg","Pepperoni n Sausage"),
 
 new PizzaVariety("Hawaiian","hawaiian5.jpg","Aloha Flavour"),
 
@@ -192,8 +192,6 @@ $(document).ready(function(){
         data-bs-toggle="offcanvas"
         data-bs-target="#pizzaCustomize"
         aria-controls="offcanvasBottom">Order</a>
-
-
       </div>
     </div>
       </div>`;
@@ -232,6 +230,9 @@ $(document).ready(function(){
 
  /* populating Pizza size options complete */
 
+
+
+
 /* Populate Toppings */
 // Then we formulate a function to provide us with option selector enabling us to select one or
 //  multiple Toppings options to be provided to our Pizza Order Application user.
@@ -266,6 +267,9 @@ $(document).ready(function(){
   });
        /* populate Toppings Complete */
 
+
+
+
  //Then we formulate a function to provide us with a drop down enabling us populate
 // our Pizza Application with the crust options available
 
@@ -282,6 +286,8 @@ $(document).ready(function(){
 
  /* populating Pizza crust options complete */
 
+
+
  /* Formulate a function to provide us with option selector enabling the Customer 
    to select one of the multiple delivery zone options available for the Pizza to be 
    delivered */
@@ -292,7 +298,7 @@ $(document).ready(function(){
      // console.log(cart.delivery);
      updateUI();
  });
- /* End of populate delivery zones */
+ /* populate delivery zones complete */
 
 
 
