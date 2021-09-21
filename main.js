@@ -216,7 +216,11 @@ $(document).ready(function(){
   /* Populating pizza list complete */
 
 
-// Next we formulate a function to populate our Pizza Application with the size options available
+  
+
+// Next we formulate a function to provide us with a drop down enabling us populate
+// our Pizza Application with the size options available
+
     populateDropdowns($('select#size'), pizzaSizes);
     $('select#size').on('change', function(){
       const size =$(this).val();
@@ -228,8 +232,58 @@ $(document).ready(function(){
 
  /* Populating Pizza size options complete */
 
+/* Populate Toppings */
+// Then we formulate a function to provide us with option selector enabling us to select one
+// of the multiple Pizza Application's Toppings options available to a customer.
+    for(let i=0; i<toppingsList.length; i++){
+      let topping = toppingsList[i];
+      $('#toppings').append(`<div class="form-check">
+      <input class="form-check-input" type="checkbox" value="`+topping.name+`" id="flexCheckDefault`+i+`">
+      <label class="form-check-label" for="flexCheckDefault`+i+`">
+        `+topping.name+`
+      </label>
+    </div>`);
+      
+  }
+
+  $('#toppings .form-check-input').on('change', function(){
+      const isCheck = this.checked;
+      
+      const selectedToppingValue = $(this).val();
+      let topping = toppingsList.find(function(topping){
+          if(topping.name == selectedToppingValue) return true;
+          else return false;
+      });
+      const indexOfSelectedTopping = selectedPizza.topping.findIndex(function(toppingItem){ 
+          return toppingItem.name == topping.name;
+       });
+
+      if(indexOfSelectedTopping == -1 && isCheck) selectedPizza.topping.push(topping);
+      else if(indexOfSelectedTopping > -1 && !isCheck){
+          selectedPizza.topping.splice(indexOfSelectedTopping, 1);
+      }
+      updateUI()
+  });
+  /* end of Populate sizes */
 
 
+
+
+//Then we formulate a function to provide us with a drop down enabling us populate
+// our Pizza Application with the crust options available
+
+ populateDropdowns($('select#crust'), crustList, 'name', 'name', 'price');
+ $('select#crust').on('change', function(){
+     const selectedCrustValue = $(this).val();
+     let crust = crustList.find(function(crust){
+         if(crust.name == selectedCrustValue) return true;
+         else return false;
+     });
+     selectedPizza.crust = crust;
+     updateUI();
+ });
+
+ /* Populating Pizza crust options complete */
 
 
 
