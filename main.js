@@ -165,6 +165,20 @@ new Zone("ZoneC",300)
 
 ];
 
+// After defining our dropdowns, we proceed to formulate the function which
+// the Dropdown lists shall use to obtain the values that shall be availed 
+// to the Customer
+
+function populateDropdowns(sizeElement, items, valueFiled, textField, extraField){
+  for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+      let extras = extraField ? '('+item[extraField]+')' : '';
+      let value = valueFiled ? item[valueFiled] : item;
+      let text = textField ? item[textField] : item;
+      sizeElement.append(`<option value="` + value + `">` + text + extras+`</option>`);
+  }
+}
+
 $(document).ready(function(){
 
 /* Begin by formulating a function to Populate our Pizza List Array
