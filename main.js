@@ -178,7 +178,7 @@ $(document).ready(function(){
   for (let i = 0; i < pizzaListing.length; i++) {
       let pizzaItem = pizzaListing[i];
 
-      pizzaItems += `<div class="col-md-4 p-3">
+      pizzaItems += `<div class="col-md-2 p-1">
       <div class="card" style="width: 18rem;">
       <div class="pizzaImage">
       <img src="./assets/images/${pizzaItem.image}" class="card-img-top" alt="...">
@@ -187,7 +187,12 @@ $(document).ready(function(){
         <h5 class="card-title">`+ pizzaItem.name + `</h5>
         <p class="card-text">`+ pizzaItem.description + `</p>
 
-      
+        <a href="#" data-index="`+ i + `" 
+        class="btn btn-primary orderBtn"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#pizzaCustomazation"
+        aria-controls="offcanvasBottom">Order</a>
+
 
       </div>
     </div>
