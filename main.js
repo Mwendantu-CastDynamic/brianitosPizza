@@ -145,7 +145,7 @@ new PizzaVariety("Chicken","chickenalfredo6.jpg","ChickenAlfredo")
 // We also create an array to hold all instances of the Crust Object
 // defined to be applied in our Pizza Application.
 
-const crustsList = [
+const crustList = [
 
 new Crust("Crispy", 100),
 new Crust("Stuffed", 200),
