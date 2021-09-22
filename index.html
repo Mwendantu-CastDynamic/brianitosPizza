@@ -62,7 +62,7 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
       <div class="container" style="width:100%; height:100vh;" >
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Place Your Brianito Pizza Order Here</a>
+                <a class="navbar-brand">Choose Brianito Pizzas to Order</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -72,15 +72,71 @@ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2TH
         </nav>
 
         <div class="container">
-        <div id="pizzalisting" class="row " style="overflow:hidden" >
+          <div class="p-3">
+              <button type="button" class="btn" id="shoppingCartBtn">
+                  <span>Shopping Cart</span>
+                  <span class="badge bg-secondary" id="cartItems">0</span>
+              </button>
+              <span class="badge bg-warning text-dark subTotal">0</span>
+              <button disabled class="btn btn-primary btn-sm checkoutBtn">Checkout</button>
+          </div>
+  
+          <!-- beginning of the shoppingcart -->
+          <div id="shoppingCart" class="shadow rounded border border-light bg-white">
+              <h3 class="p-3">Shopping Cart</h3>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item cartItem">
+                      <div class="row">
+                          <div class="col-2">
+                              <div style="height: 50px; overflow:auto;">
+                                  <img src="./images/pizzaImages/chickenalfredo6.jpg" style="width: 100%;" alt="">
+                              </div>
+                          </div>
+                          <div class="col-4">
+                              <span class="name">0</span>
+                              <div class="details"></div>
+                          </div>
+                          <div class="col-6">
+                              <span class="price">0</span>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+              <div class="p-3 d-flex justify-content-between">
+                  <div>Sub Total</div>
+                  <div class="subTotal ml-auto">0</div>
+              </div>
+  
+              <div class="p-3">
+                  <h4>Checkout Details</h4>
+                  <h5>Delivery Details</h5>
+                  <Select class="form-control" id="deliveryZones">
+                      <option value="">Pick up</option>
+                  </Select>
+              </div>
+  
+              <div class="p-3 d-flex justify-content-between">
+                  <strong>Total Price</strong>
+                  <strong id="totalPrice">Total Price</strong>
+                  <div>
+                      <button disabled type="button" class="btn btn-sm btn-primary checkoutBtn">Checkout</button>
+                  </div>
+              </div>
+  
+          </div>
+          <!-- conclude shoppingcart -->
+
+
+        <div class="container">
+        <div id="pizzalisting" class="row " style="overflow:hidden;" >
          <!--list of pizza--> 
         </div>
       </div>
 
-        <!--Pizza Order Process OffCanvas -->
+        <!-- OffCanvas Oriented Pizza Order Procedure -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="pizzaCustomize" aria-labelledby="pizzaNameDiv">
           <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="pizzaNameDiv">Complete Your Brianito Pizza Order Here</h5>
+              <h6 class="offcanvas-title" id="pizzaNameDiv">Complete Your Brianito Pizza Order</h6>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                   aria-label="Close"></button>
           </div>

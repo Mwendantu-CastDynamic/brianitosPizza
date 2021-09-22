@@ -217,7 +217,7 @@ function updateUI(){
         if(item.topping.length > 0){
             toppingPrice = item.topping.reduce((a, b)=>a+b.price, 0);
         }
-        const toppingPrice = item.topping ? item.topping.price : 0;
+        
         subTotalPrice += item.price + crustPrice + toppingPrice;
 
         $('#shoppingCart ul.list-group').append(cartItemHtml);        
