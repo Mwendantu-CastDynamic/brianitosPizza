@@ -18,25 +18,30 @@ for which has been designated to it to achieve.
 // 1. We begin by defining and initializing our main Object the Pizza
 //    using the special Constructor Object Declaration Function.
 
+       
+
       function PizzaVariety(name, image, description){
             this.name = name;
             this.image= image;
             this.description = description;
 
+                  
+
 // Within the PizzaVariety Object, we define an object nested in the
 // Pizza Variety Object.            
 
-            this.prices={
-              "Small": 600,
+            this.prices = {
+              "Large": 1200,
               "Medium":900,
-              "Large":1200
+              "Small":600
 
             }
       }
-
+    
 // This implies that the prices according to size will be fixed for all
 // the various Pizza varieties.
 
+let pizzaSizes =["Small","Medium","Large"];
 
 // Lets now define the components interacting with the Pizza Object,
 // that will enable the Pizza Object to generate its expected outcomes.
@@ -78,7 +83,7 @@ function Crust(name, price){
 function Topping(name, price){
 
       this.name= name;
-      this.price=price;
+      this.price =price;
 
 }
 // According to our Business logic, given that our Brianitos Pizza customers 
@@ -140,7 +145,7 @@ new PizzaVariety("Chicken","chickenalfredo6.jpg","ChickenAlfredo")
 // We also create an array to hold all instances of the Crust Object
 // defined to be applied in our Pizza Application.
 
-const CrustsList = [
+const crustsList = [
 
 new Crust("Crispy", 100),
 new Crust("Stuffed", 200),
@@ -152,15 +157,15 @@ const toppingsList= [
 
 new Topping("Cheese", 100),
 new Topping("Pepperoni", 150),
-new Topping("Chicken",200 )
+new Topping("Chicken",200)
 
 ];
 
 const zones = [
 
-new Zone("ZoneA", 100),
-new Zone("ZoneB", 200),
-new Zone("ZoneC",300)
+new Zone("Zone A", 100),
+new Zone("Zone B", 200),
+new Zone("Zone C",300)
 
 
 ];
@@ -169,15 +174,76 @@ new Zone("ZoneC",300)
 // the Dropdown lists shall use to obtain the values that shall be availed 
 // to the Customer
 
-function populateDropdowns(sizeElement, items, valueFiled, textField, extraField){
+function populateDropdowns(sizeElement, items, valueFilled, textField, extraField){
   for (let i = 0; i < items.length; i++) {
       let item = items[i];
       let extras = extraField ? '('+item[extraField]+')' : '';
-      let value = valueFiled ? item[valueFiled] : item;
+      let value = valueFilled ? item[valueFilled] : item;
       let text = textField ? item[textField] : item;
       sizeElement.append(`<option value="` + value + `">` + text + extras+`</option>`);
   }
 }
+
+
+// We then define an update user interface function to be called 
+// whenever we add or remove Pizza Order Items inorder for the 
+// price on checkout to accurately reflect the changes to the Cart Items.
+
+function updateUI(){
+  $('#cartItems').html(cart.cartItems.length);
+  if(selectedPizza){
+      let pizzaPrice = 0;
+      if(selectedPizza.price){
+          pizzaPrice += selectedPizza.price;
+          $('#addToCartBtn').removeAttr('disabled');
+      }
+      else{
+          $('#addToCartBtn').attr('disabled', true);
+      }
+      if(selectedPizza.crust) pizzaPrice += selectedPizza.crust.price;
+      if(selectedPizza.topping) pizzaPrice += selectedPizza.topping.reduce((a, b)=>a+b.price, 0);
+              
+      $('#pizzaPrice').html(pizzaPrice);
+
+  }
+
+  let subTotalPrice = 0;
+    let totalPrice = 0;
+    $('#shoppingCart ul.list-group').html('');
+    for(let i=0; i<cart.cartItems.length; i++){
+        const item = cart.cartItems[i];
+        const crustPrice = item.crust ? item.crust.price : 0;
+        let toppingPrice = 0;
+        if(item.topping.length > 0){
+            toppingPrice = item.topping.reduce((a, b)=>a+b.price, 0);
+        }
+        const toppingPrice = item.topping ? item.topping.price : 0;
+        subTotalPrice += item.price + crustPrice + toppingPrice;
+
+        $('#shoppingCart ul.list-group').append(cartItemHtml);        
+        $('#shoppingCart ul.list-group li:last img').attr('src', './assets/images/'+item.image);
+        $('#shoppingCart ul.list-group li:last span.name').html(item.name);
+        $('#shoppingCart ul.list-group li:last span.price').html(item.price);
+        if(item.crust) 
+            $('#shoppingCart ul.list-group li:last div.details')
+            .append("Crust:"+item.crust.name)
+
+        if(item.topping) $('#shoppingCart ul.list-group li:last div.details')
+            .append(" Topping:"+item.topping.map(topping=>topping.name).join(','));
+        
+    }
+
+    $('.checkoutBtn').each(function(){
+        if(cart.cartItems.length > 0)
+            $(this).removeAttr('disabled');
+        else $(this).attr('disabled', true);
+    });
+
+    $('.subTotal').html(subTotalPrice);
+    $('#totalPrice').html(subTotalPrice + (cart.delivery ? cart.delivery.price : 0));
+
+}
+
 
 $(document).ready(function(){
 
@@ -210,7 +276,7 @@ $(document).ready(function(){
         class="btn btn-primary orderBtn"
         data-bs-toggle="offcanvas"
         data-bs-target="#pizzaCustomize"
-        aria-controls="offcanvasBottom">Order</a>
+        aria-controls="offcanvasEnd">Order</a>
 
       </div>
     </div>
@@ -321,7 +387,7 @@ $(document).ready(function(){
  /* populate delivery zones complete */
 
 
-// Complete Pizza Order functionality by formulating jQuery functions 
+// Complete Pizza Order Cart Operation Logic by formulating jQuery functions 
 // to handle the multiple purchase Cart interface logic
 
   const addToCartBtn = $('#addToCartBtn');

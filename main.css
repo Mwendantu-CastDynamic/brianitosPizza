@@ -24,17 +24,13 @@ background: url()
 
 }
 
+#pizza-attributs{
+  display: none;
+}
 
-
-div #concludePage{
-
-height:100%;
-background-image: linear-gradient( 0deg,
-  rgba(0, 0, 0, 0.5),
-  rgba(0, 0, 0, 0.5)),
-   url(./images/chorizoMushroomPizzaHeader.jpg) center center;
-background:cover;
-background-repeat:none;
-
+#shoppingCart{
+  position:absolute;
+  z-index: 1;
+  display: none;
 }
 
